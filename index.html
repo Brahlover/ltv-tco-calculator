@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced PPC LTV/ROI Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .container { display: flex; flex-wrap: wrap; gap: 20px; }
+        .section { flex: 1 1 300px; padding: 15px; border: 1px solid #ccc; border-radius: 8px; }
+        h2 { border-bottom: 2px solid #007bff; padding-bottom: 5px; color: #007bff; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input[type="number"], input[type="range"] { width: 95%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 20px; }
+        .result-box { background-color: #f8f9fa; border: 1px solid #e9ecef; padding: 15px; margin-top: 20px; border-radius: 6px; }
+        .metric { margin-bottom: 15px; padding: 10px; border-left: 5px solid #007bff; background-color: #e9f5ff; }
+        .metric-value { font-size: 1.5em; font-weight: bold; color: #28a745; }
+    </style>
+</head>
+<body>
+    <h1>💰 Advanced PPC LTV/ROI Calculator</h1>
+    <p>Calculate **True Campaign Value** by integrating Customer Lifetime Value (LTV) and Total Cost of Ownership (TCO).</p>
+
+    <div class="container">
+        <div class="section">
+            <h2>1. 📈 LTV & Campaign Metrics</h2>
+
+            <label for="aov">Average Order Value (AOV) $</label>
+            <input type="number" id="aov" value="150" min="1">
+
+            <label for="gcMargin">Gross Contribution Margin (%)</label>
+            <input type="number" id="gcMargin" value="60" min="1" max="100">
+
+            <label for="pfr">Purchases Per Year</label>
+            <input type="number" id="pfr" value="2.5" min="0.1" step="0.1">
+
+            <label for="clr">Customer Longevity (Years)</label>
+            <input type="number" id="clr" value="3" min="0.1" step="0.5">
+
+            <label for="newCustomers">New Customers Acquired</label>
+            <input type="number" id="newCustomers" value="150" min="1">
+        </div>
+
+        <div class="section">
+            <h2>2. 💸 Total Cost of Ownership (TCO)</h2>
+
+            <label for="adSpend">Total Ad Spend $</label>
+            <input type="number" id="adSpend" value="5000" min="1">
+
+            <label for="agencyFee">Agency/Freelance Fees $</label>
+            <input type="number" id="agencyFee" value="1000" min="0">
+
+            <label for="croCost">CRO/Tooling Investment $</label>
+            <input type="number" id="croCost" value="200" min="0">
+
+            <label for="laborHours">Internal Labor Hours Spent</label>
+            <input type="number" id="laborHours" value="80" min="0">
+
+            <label for="laborRate">Avg. Labor Rate $ / hour</label>
+            <input type="number" id="laborRate" value="45" min="1">
+        </div>
+
+        <div class="section">
+            <h2>3. ✨ Indirect Benefits (Vision)</h2>
+            <p>Rate campaign's non-financial impact (1=Low, 5=High):</p>
+
+            <label for="brandLift">Brand Lift / Awareness Impact</label>
+            <input type="range" id="brandLift" value="3" min="1" max="5">
+            <span id="brandLiftValue">3</span>
+
+            <label for="seoSignal">SEO Signal / Content Boost</label>
+            <input type="range" id="seoSignal" value="2" min="1" max="5">
+            <span id="seoSignalValue">2</span>
+
+            <label for="marketResearch">Audience Data / Market Research Value</label>
+            <input type="range" id="marketResearch" value="4" min="1" max="5">
+            <span id="marketResearchValue">4</span>
+        </div>
+    </div>
+
+    <button id="calculateBtn">Calculate True Campaign Value</button>
+
+    <div class="result-box" id="results">
+        <h2>✅ Campaign Value Summary</h2>
+        <div id="financialResults" class="container">
+            <div id="ltvResult" class="metric">LTV: <span class="metric-value">0.00</span></div>
+            <div id="tcoResult" class="metric">TCO: <span class="metric-value">0.00</span></div>
+            <div id="cpaResult" class="metric">Effective CPA: <span class="metric-value">0.00</span></div>
+            <div id="roiResult" class="metric">Final LTV ROI: <span class="metric-value">0.00%</span></div>
+        </div>
+
+        <h3>Strategic Vision Score</h3>
+        <p id="visionScoreOutput">Click 'Calculate' to see the strategic score.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
